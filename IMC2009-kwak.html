@@ -1,0 +1,293 @@
+<HTML>
+<HEAD>
+   <BASE href="http://an.kaist.ac.kr/traces/">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <META NAME="Keywords" CONTENT="YouTube,Trace,IMC,2007">
+   <!--
+	 <script type="text/javascript" src="js/prototype.js"></script>
+	 <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+	 <script type="text/javascript" src="js/lightbox.js"></script>
+	 <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
+	 -->
+	 <link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+   <TITLE>Mining communities in networks: a solution for consistency and its evaluation</TITLE>
+</HEAD>
+<BODY text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>Mining communities in networks: a solution for consistency and its evaluation</H1>
+<div id="main">
+
+<P><a href="http://an.kaist.ac.kr/~haewoon">Haewoon Kwak</a>, Yoonchan Choi, Young-Ho Eom, Hawoong Jeong, <a href="http://an.kaist.ac.kr/~sbmoon">Sue Moon</a></br>
+Proceedings of the 9th ACM SIGCOMM conference on Internet measurement conference, Pages 301-314, 2009<br/>
+<a href="http://portal.acm.org/citation.cfm?id=1644893.1644930&coll=portal&dl=ACM&type=series&idx=SERIES10693&part=series&WantType=Proceedings&title=IMC">ACM Portal</a>
+</P>
+
+<div id="contents"><h3>Contents</h3>
+<ul>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#abstract">Abstract</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#dataset">Dataset</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#code">Code</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#experiements">Experiments</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#as_case_study">A Case Study of AS Community</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#bibtex">Bibtex</a></li>
+<li><a href="http://an.kaist.ac.kr/traces/IMC2009-kwak.html#contacts">Contacts</a></li>
+</div>
+
+<a name="abstract"></a>
+<H2 id="abstract">Abstract</H2>
+<P>
+Online social networks pose significant challenges to computer
+scientists, physicists, and sociologists alike, for their
+massive size, fast evolution, and uncharted potential for social
+computing. One particular problem that has interested
+us is community identification. Many algorithms based on
+various metrics have been proposed for identifying communities
+in networks [18, 24], but a few algorithms scale to very
+large networks. In recent, three community identification algorithms
+of CNM [16], Wakita [57], and Louvain [10] are
+prevalent due to their scalability to a few millions of nodes.
+Using a diverse set of network topologies, we exhibit that
+all three algorithms produce inconsistent communities every
+time the node ordering changes.
+We propose two quantitative metrics to represent the level
+of consistency across multiple runs of an algorithm: pairwise
+membership probability and consistency. Based on these
+two metrics, we solve the consistency problem without compromising
+the modularity. We demonstrate that our solution
+to use pairwise membership probabilities as link weights
+generates consistent communities within 6 or fewer cycles
+even in a network of tens of millions of nodes. We also
+examine identified communities in the AS graph. ASes in
+some communities are geographically close, even though
+the topological information bears no information about geographic
+locations. Also recursive application of our approach
+to a giant community has exposed varying degrees
+of strong ties between tier-1 ISPs and their customers. Our
+approach offers a new tool in the study of network structures
+and their evolutions.
+</p>
+
+<a name="dataset"></a>
+<H2>Dataset</H2>
+<p>
+We use a diverse set of networks for evaluation in this work.
+These networks vary greatly in characteristics and in size from the
+smallest of 34 nodes to the largest of tens of millions.  They in-
+clude off-line and online social networks, an online bulletin board
+system, a biological neural network, a protein interaction network,
+Internet Autonomous System (AS) graph, World-Wide Web graphs.  A detailed 
+list of public resources is like following:</p>
+<ul>
+<li>Zachary&#8217;s karate club <a
+href="http://www-personal.umich.edu/~mejn/netdata/">[link]</a></li>
+<li>C. Elegans <a href="http://www.nd.edu/~networks/resources.htm">[link]</a></li>
+<li>Proten Interaction network <a
+href="http://www.nd.edu/~networks/resources.htm">[link]</a></li>
+<li>Oliveira&#8217;s AS Graph <a href="http://irl.cs.ucla.edu/topology/">[link]</a></li>
+<li>Facebook <a href="http://socialnetworks.mpi-sws.org/">[link]</a></li>
+<li>World-Wide Web <a href="http://www.nd.edu/~networks/resources.htm">[link]</a></li>
+<li>Wikipedia <a href="http://socialnetworks.mpi-sws.org/">[link]</a></li>
+<li>YouTube <a href="http://socialnetworks.mpi-sws.org/">[link]</a></li>
+<li>Flickr <a href="http://socialnetworks.mpi-sws.org/">[link]</a></li>
+<li>Orkut <a href="http://socialnetworks.mpi-sws.org/">[link]</a></li>
+</ul>
+
+<a name="code"></a>
+<h2>Code</h2>
+<p>
+<ul>
+<li>CNM algorithm <a
+href="http://www.cs.unm.edu/¡­aaron/research/fastmodularity.htm">[link]</a></li>
+<li>Wakita algorithm <a href="http://www.is.titech.ac.jp/">[link]</a></li>
+<li>Louvain algorithm <a href="http://findcommunities.googlepages.com/">[link]</a></li>
+<li>Our solution</li>
+<ul>
+<li>Shuffling edges <a href="code/shuffling_edges.c">[unweigted]</a> <a href="code/shuffling_wedges.c">[weighted]</a></li>
+<li>Calculating pairwise membership probability <a href="code/pairwise_membership.cpp">[link]</a></li>
+<li>Calculating <i>consistency</i> <a href="code/consistency.c">[link]</a></li>
+</ul>
+</ul>
+</p>
+
+<a name="experiments"></a>
+<h2>Experiments</h2>
+<p>If you want to see larger images, just click.<p>
+<h3>Change of Pairwise Membership Probability</h3>
+<h4>Zachary's karate club</h4>
+<a href="cci/karate_0_1.png" rel="lightbox"><img src="cci/karate_0_1.png" /></a>
+<a href="cci/karate_1_2.png" rel="lightbox"><img src="cci/karate_1_2.png" /></a>
+<a href="cci/karate_2_3.png" rel="lightbox"><img src="cci/karate_2_3.png" /></a>
+<a href="cci/karate_3_4.png" rel="lightbox"><img src="cci/karate_3_4.png" /></a>
+<a href="cci/karate_4_5.png" rel="lightbox"><img src="cci/karate_4_5.png" /></a>
+<h4>C.Elegans</h4>
+<a href="cci/celegans_0_1.png" rel="lightbox"><img src="cci/celegans_0_1.png" /></a>
+<a href="cci/celegans_1_2.png" rel="lightbox"><img src="cci/celegans_1_2.png" /></a>
+<a href="cci/celegans_2_3.png" rel="lightbox"><img src="cci/celegans_2_3.png" /></a>
+<a href="cci/celegans_3_4.png" rel="lightbox"><img src="cci/celegans_3_4.png" /></a>
+<a href="cci/celegans_4_5.png" rel="lightbox"><img src="cci/celegans_4_5.png" /></a>
+<h4>Protein interaction graph</h4>
+<a href="cci/protein_0_1.png" rel="lightbox"><img src="cci/protein_0_1.png" /></a>
+<a href="cci/protein_1_2.png" rel="lightbox"><img src="cci/protein_1_2.png" /></a>
+<a href="cci/protein_2_3.png" rel="lightbox"><img src="cci/protein_2_3.png" /></a>
+<a href="cci/protein_3_4.png" rel="lightbox"><img src="cci/protein_3_4.png" /></a>
+<a href="cci/protein_4_5.png" rel="lightbox"><img src="cci/protein_4_5.png" /></a>
+<h4>Oliveira's AS Graph</h4>
+<a href="cci/oliveira_0_1.png" rel="lightbox"><img src="cci/oliveira_0_1.png" /></a>
+<a href="cci/oliveira_1_2.png" rel="lightbox"><img src="cci/oliveira_1_2.png" /></a>
+<a href="cci/oliveira_2_3.png" rel="lightbox"><img src="cci/oliveira_2_3.png" /></a>
+<a href="cci/oliveira_3_4.png" rel="lightbox"><img src="cci/oliveira_3_4.png" /></a>
+<a href="cci/oliveira_4_5.png" rel="lightbox"><img src="cci/oliveira_4_5.png" /></a>
+<h4>Facebook</h4>
+<a href="cci/facebook_0_1.png" rel="lightbox"><img src="cci/facebook_0_1.png" /></a>
+<a href="cci/facebook_1_2.png" rel="lightbox"><img src="cci/facebook_1_2.png" /></a>
+<a href="cci/facebook_2_3.png" rel="lightbox"><img src="cci/facebook_2_3.png" /></a>
+<a href="cci/facebook_3_4.png" rel="lightbox"><img src="cci/facebook_3_4.png" /></a>
+<a href="cci/facebook_4_5.png" rel="lightbox"><img src="cci/facebook_4_5.png" /></a>
+<h4>World Wide Web</h4>
+<a href="cci/www_0_1.png" rel="lightbox"><img src="cci/www_0_1.png" /></a>
+<a href="cci/www_1_2.png" rel="lightbox"><img src="cci/www_1_2.png" /></a>
+<a href="cci/www_2_3.png" rel="lightbox"><img src="cci/www_2_3.png" /></a>
+<a href="cci/www_3_4.png" rel="lightbox"><img src="cci/www_3_4.png" /></a>
+<a href="cci/www_4_5.png" rel="lightbox"><img src="cci/www_4_5.png" /></a>
+<h4>Wikipedia</h4>
+<a href="cci/wikipedia_0_1.png" rel="lightbox"><img src="cci/wikipedia_0_1.png" /></a>
+<a href="cci/wikipedia_1_2.png" rel="lightbox"><img src="cci/wikipedia_1_2.png" /></a>
+<a href="cci/wikipedia_2_3.png" rel="lightbox"><img src="cci/wikipedia_2_3.png" /></a>
+<a href="cci/wikipedia_3_4.png" rel="lightbox"><img src="cci/wikipedia_3_4.png" /></a>
+<a href="cci/wikipedia_4_5.png" rel="lightbox"><img src="cci/wikipedia_4_5.png" /></a>
+<h4>YouTube</h4>
+<a href="cci/youtube_0_1.png" rel="lightbox"><img src="cci/youtube_0_1.png" /></a>
+<a href="cci/youtube_1_2.png" rel="lightbox"><img src="cci/youtube_1_2.png" /></a>
+<a href="cci/youtube_2_3.png" rel="lightbox"><img src="cci/youtube_2_3.png" /></a>
+<a href="cci/youtube_3_4.png" rel="lightbox"><img src="cci/youtube_3_4.png" /></a>
+<a href="cci/youtube_4_5.png" rel="lightbox"><img src="cci/youtube_4_5.png" /></a>
+<h4>Flickr</h4>
+<a href="cci/flickr_0_1.png" rel="lightbox"><img src="cci/flickr_0_1.png" /></a>
+<a href="cci/flickr_1_2.png" rel="lightbox"><img src="cci/flickr_1_2.png" /></a>
+<a href="cci/flickr_2_3.png" rel="lightbox"><img src="cci/flickr_2_3.png" /></a>
+<a href="cci/flickr_3_4.png" rel="lightbox"><img src="cci/flickr_3_4.png" /></a>
+<a href="cci/flickr_4_5.png" rel="lightbox"><img src="cci/flickr_4_5.png" /></a>
+<a href="cci/flickr_5_6.png" rel="lightbox"><img src="cci/flickr_5_6.png" /></a>
+<h4>Orkut</h4>
+<a href="cci/orkut_0_1.png" rel="lightbox"><img src="cci/orkut_0_1.png" /></a>
+<a href="cci/orkut_1_2.png" rel="lightbox"><img src="cci/orkut_1_2.png" /></a>
+<a href="cci/orkut_2_3.png" rel="lightbox"><img src="cci/orkut_2_3.png" /></a>
+<a href="cci/orkut_3_4.png" rel="lightbox"><img src="cci/orkut_3_4.png" /></a>
+<a href="cci/orkut_4_5.png" rel="lightbox"><img src="cci/orkut_4_5.png" /></a>
+<a href="cci/orkut_5_6.png" rel="lightbox"><img src="cci/orkut_5_6.png" /></a>
+<a href="cci/orkut_6_7.png" rel="lightbox"><img src="cci/orkut_6_7.png" /></a>
+<a href="cci/orkut_7_8.png" rel="lightbox"><img src="cci/orkut_7_8.png" /></a>
+<a href="cci/orkut_8_9.png" rel="lightbox"><img src="cci/orkut_8_9.png" /></a>
+<h4>Cyworld</h4>
+<!--
+<a href="cci/cyworld_0_1.png" rel="lightbox"><img src="cci/cyworld_0_1.png" /></a>
+-->
+<a href="cci/cyworld_1_2.png" rel="lightbox"><img src="cci/cyworld_1_2.png" /></a>
+<a href="cci/cyworld_2_3.png" rel="lightbox"><img src="cci/cyworld_2_3.png" /></a>
+<a href="cci/cyworld_3_4.png" rel="lightbox"><img src="cci/cyworld_3_4.png" /></a>
+<a href="cci/cyworld_4_5.png" rel="lightbox"><img src="cci/cyworld_4_5.png" /></a>
+<a href="cci/cyworld_5_6.png" rel="lightbox"><img src="cci/cyworld_5_6.png" /></a>
+<a href="cci/cyworld_6_7.png" rel="lightbox"><img src="cci/cyworld_6_7.png" /></a>
+<a href="cci/cyworld_7_8.png" rel="lightbox"><img src="cci/cyworld_7_8.png" /></a>
+<a href="cci/cyworld_8_9.png" rel="lightbox"><img src="cci/cyworld_8_9.png" /></a>
+
+<a name="as_case_study"></a>
+<H2>A Case Study of AS Community</H2>
+<h3>AS Topology: A Bird's Eye View</h3>
+<p>
+We find <i>48 communities</i> in the AS graph released by Oliveira. <br/>
+We visualize all communities in the below figure by mapping an AS into a node, and a relationship between AS into an edge.  <br/>
+Each color represents a different community.
+The community of sky blue in the left-side is the largest community.<br/>
+Click on the image for a large version (5904x3888).  
+</p>
+<p>
+<a href="cci/as_with_label.png"><img src="cci/as_crop_label.png"></a>
+</p>
+<h3>The largest community in the L community</h3>
+<p>
+<a href="cci/L.png"><img src="cci/L_crop.png"></a>
+<br/>
+<i>
+Visualization of the
+largest community in the L community. The red circles
+are MCI Communications Services (ASN=701), AT&T
+WorldNet Services (ASN = 7018), and Sprint (ASN =
+1239). The color of a node changes from red to blue as
+the degree decreases. The size of a node is proportional
+to the degree in log-scale.
+</i>
+</p>
+<h3>Geographically contcentrated community</h3>
+<h4>@Korea</h4>
+<p>
+<!--<img src="korean_as.png" width="600">-->
+<a href="cci/korea.png" rel="lightbox"><img src="cci/korea_crop.png"/></a>
+<br/>
+<i>
+Visualization of the
+community including Korea telecom AS (ASN=4766).
+The red circles are of Korea Telecom (ASN = 4766), Dacom
+(ASN = 3786), and Hanaro (ASN = 9318). They are
+major ISPs in Korea.
+</i>
+</p>
+<h4>@HongKong</h4>
+<p>
+<a href="cci/hk.png"><img src="cci/hk_crop.png"/></a>
+<br/>
+This figure is omitted in the paper. <i>
+Visualization of the community including HongKong IXPs, Reach Network Border AS
+(ASN=4637), Hong Kong Internet Exchange--Route Server (ASN=4635).  This
+community also includes most of Hong Kong ISPs listed in Hong Kong Internet
+Service Provider Assocation. 
+</i>
+</p>
+<h3>Star-shaped community</h3>
+<p>
+<a href="cci/star.png"><img src="cci/star_crop.png"></a>
+<br/>
+<i>
+Visualization of
+the star-community whose hub is Profit-Center LLC
+(ASN=12383) at Kiev, Ukraine. All ASes but the hub
+have only one link to the hub. That is, they are stub ASes.
+In addition, all relations between the hub and the stub
+are provider-customer.
+</i>
+</p>
+<p>
+We visualize network graphs via <a href="http://networkx.lanl.gov/">NetworkX</a>, <a href="http://igraph.sourceforge.net/">igraph</a>, and <a href="http://gephi.org/">Gephi (for HK)</a>
+</p>
+
+<h3>Communities in AS graph</h3>
+<ul>
+	<li>ASes are divided by communities.
+	<li>Format: <i>AS Number \t AS Type \t Degree from AS relations \t AS
+	Name (Description)</i>
+	<li><a href="data/which_ases_are_in_the_same_communities">link</a>
+</ul>
+
+<a name="bibtex"></a>
+<H2 id="bibtex">Bibtex</H2>
+<pre>
+	@inproceedings{1644930,
+	 author = {Kwak, Haewoon and Choi, Yoonchan and Eom, Young-Ho and Jeong, Hawoong and Moon, Sue},
+	 title = {Mining communities in networks: a solution for consistency and its evaluation},
+	 booktitle = {IMC '09: Proceedings of the 9th ACM SIGCOMM conference on Internet measurement conference},
+	 year = {2009},
+	 isbn = {978-1-60558-771-4},
+	 pages = {301--314},
+	 location = {Chicago, Illinois, USA},
+	 doi = {http://doi.acm.org/10.1145/1644893.1644930},
+	 publisher = {ACM},
+	 address = {New York, NY, USA},
+	 }
+</pre>
+
+
+<a name="contacts"></a>
+<H2>Contact</H2>
+<br>Haewoon Kwak (haewoon AT an.kaist.ac.kr)
+</div>
+</body>
+</html>

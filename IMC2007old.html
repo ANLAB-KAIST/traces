@@ -1,0 +1,101 @@
+
+
+<CENTER><H2><FONT face=Arial,Helvetica>Data Traces on User-Generated Videos</FONT></H2></CENTER>
+
+In this page, 
+we share our traces on user-generated videos for the wider community use. 
+Our traces include meta-information about videos from 
+<A href="http://www.youtube.com">YouTube</a>
+and <A href="http://ucc.daum.net">Daum</a> services.
+We provide snapshot of all videos in some of their video categories. 
+For more information on the traces,
+please refer to our paper (linked at the bottom of this page).  
+
+
+
+<FONT face=Arial,Helvetica><H3>YouTube</H3></FONT>
+<h4>YouTube Entertainment Category </h4>
+<li>Format: <i>url | length | views | ratings | stars </i>
+
+<li>Example: /watch?v=abc|01:30|100|5|4.0
+
+<li>Description:
+<br>Each line includes the meta-information of a video. The example above indicates that 
+the YouTube video 
+<i>http://www.youtube.com/watch?v=abc</i> is 1:30 or 90 seconds long (i.e. length) and
+is viewed 100 times (i.e. views), while  5 users rated this video (i.e. ratings) 
+and the average score of rating is 4.0 (i.e. stars). 
+Some of the fields in our traces may be empty.
+This indicates that the value is 0 (such as 0 ratings)
+or the data collection of that field was not available. 
+<LI><A href="data/YoutubeEntDec212006.txt">Download YouTube Ent Trace</a>
+(collected at Dec 21, 2006, number of videos = 1,687,506)
+
+
+<p>
+<h4>YouTube Science & Technology (now called, Howto & DIY) Category  </h4>
+
+<li>Format: <i>url | upload_date | length | user_id | views1 | ratings1 | views2 | comments2 | favorited2 | ratings2 | stars2 | honors2 | links2 | related2</i>
+
+<li>Example: watch?v=abcd1234567|January 16,
+2007|01:30|mia|100|5|200|10|10|10|4.0|5|10 https://www.myspace.com/::13
+https://www.blogspot.com|/watch?v=a /watch?v=b
+
+<li>Description: 
+<br>Each line includes the meta-information of a video. This means that YouTube
+video <i>http://www.youtube.com/watch?v=abcd1234567</i>, uploaded by user ID
+mia, has length of 1:30 or 90 seconds.
+The <i>views1, ratings1</i> field reflect the number of views and ratings
+collected at January 15, 2007, which in this example are 100 and 5, respectively. 
+Then after a month at February 14, 2007, meta-information was collected for the
+same set of videos. Second collection includes wider set of fields including 
+the number of views, comments, favorites, ratings, stars, honors, linking pages
+and their clicks, and related videos. Linking videos have a format of
+<i>clicks page_url</i>, concatenated by <i>::</i> sign. For instance, in the
+example, 10 clicks were made from myspace.com web site and 13 clicks were made
+from blogspot.com web site. Finally, <i>related2</i> shows the list of related
+selected by YouTube. Note that both linking pages and related videos in our
+trace only include those shown in the immediate page of the video.
+<LI><A href="data/YoutubeSciJan162007.txt">Download YouTube Sci Trace</a>
+(collected at Jan 15, 2007 and then once more at Feb 14, 2007, number of videos
+= 252,255)
+ 
+
+
+
+<P><BR>
+<FONT face=Arial,Helvetica><H3>Daum</H3></FONT>
+
+<li>Format: <i>video_id | upload_date | length | user_id | recommended | views</i></li>
+<li>Example: /ClipView.do?clipid=994690&type=chal|06.11.03|322|80757|3|267</li>
+
+<li>Description:
+<br/>Each line includes the meta-information of a video. 
+The example here indicates that Daum video 
+whose resource URI is <i>/ClipView.do?clipid=994690&type=chal</i>, uploaded by user whose is <i>80757</i>,
+has runtime of 322 secs (5:22).
+The <i>view</i> and <i>recommendation</i> fields show the number of views and recommendations
+collected at April, 12, 2007, which in this exaple are 267 and 3, respectively.
+<li><a href="data/Daum_Food_20070403.txt">Download Daum Food Trace</a>
+(collected at April 3, 2007, number of videos = 1,393)</li>
+<li><a href="data/Daum_Travel_20070412.txt">Download Daum Travel Trace</a>
+(collected at April 12, 2007, number of videos = 9,295)</li>
+
+<P><BR>
+<FONT face=Arial,Helvetica><H3>Publication</H3></FONT>
+
+Meeyoung Cha, Haewoon Kwak, Pablo Rodriguez, Yong-Yeol Ahn, and Sue Moon,  
+<A href="http://an.kaist.ac.kr/~mycha/docs/imc2007-cha.pdf">
+I Tube, You Tube, Everybody Tubes: Analyzing the World's Largest User Generated
+Content Video System,</a> 
+Proc. of ACM Internet Measurement Conference (IMC), San Diego, California, October 2007
+
+<p><pre>@inproceedings{cha2007youtube,
+   author =       "Meeyoung Cha and Haewoon Kwak and Pablo Rodriguez and Yong-Yeol Ahn and Sue Moon",
+   title =        "{I Tube, You Tube, Everybody Tubes: Analyzing the World's Largest User Generated Content Video System}",
+   booktitle =    {ACM Internet Measurement Conference},
+   year =         {2007},
+   month =        {October},
+   address =      {San Diego, CA}
+}
+

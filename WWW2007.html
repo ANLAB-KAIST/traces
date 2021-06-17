@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+   <meta name="Keywords" content="cyworld,myspace,orkut,WWW,2007">
+   <style>body { FONT-FAMILY: times new roman, roman, courier}</style>
+   <title>Analysis of Topological Characteristics of Huge Online Social Networking Services</title>
+</head>
+<!--script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2910420-1";
+urchinTracker();
+</script-->
+<body>
+<h1>Analysis of Topological Characteristics of Huge Online Social Networking Services</h1>
+
+<p><a href="http://yongyeol.com">Yong-Yeol Ahn</a>, <a href="http://homes.cs.washington.edu/~syhan/">Seungyeop Han</a>, <a href="http://an.kaist.ac.kr/~haewoon">Haewoon Kwak</a>, <a href="http://an.kaist.ac.kr/~sbmoon">Sue Moon</a>, <a href="http://stat.kaist.ac.kr/~hjeong/">Hawoong Jeong</a><br>
+<a href="http://www.www2007.org/">16th International World Wide Web Conference (WWW)</a>, Banff, Alberta, CANADA, May 2007
+
+<p>
+Social networking services are a fast-growing business in the Internet. However, it is unknown if online relationships and their growth patterns are the same as in real-life social networks. In this paper, we compare the structures of three online social networking services: Cyworld, MySpace, and orkut, each with more than 10 million users, respectively.
+We have access to complete data of Cyworld’s ilchon (friend) relationships and analyze its degree distribution, clustering property, degree correlation, and evolution over time. We also use Cyworld data to evaluate the validity of snowball
+sampling method, which we use to crawl and obtain partial network topologies of MySpace and orkut. Cyworld, the oldest of the three, demonstrates a changing scaling behavior over time in degree distribution.
+The latest Cyworld data’s degree distribution exhibits a multi-scaling behavior, while those of MySpace and orkut have simple scaling behaviors with different exponents. Very interestingly, each of the two exponents corresponds to the different segments in Cyworld’s degree distribution. Certain online social networking services encourage online activities that cannot be easily copied in real life; we show that they deviate from close-knit online social networks which show a similar degree correlation pattern to real-life social networks.
+
+<p>
+    [<a href="http://www2007.org/papers/paper676.pdf">PDF</a> (WWW 2007 paper)]<br>
+    [<a href="http://yongyeol.com/papers/ahn-cyworld-2007.pdf">PDF</a> (Corrected &amp; extended version)]
+
+<p><pre><code>@inproceedings{2007-www-social-networking,
+   author =    "Yong-Yeol Ahn and Seungyeop Han and Haewoon Kwak and Sue Moon and Hawoong Jeong",
+   title =     "{Analysis of topological characteristics of huge online social networking services}",
+   booktitle = {WWW '07: Proceedings of the 16th international conference on World Wide Web},
+   year =      {2007},
+   isbn =      {978-1-59593-654-7},
+   pages =     {835--844},
+   location =  {Banff, Alberta, Canada},
+   doi =       {http://doi.acm.org/10.1145/1242572.1242685},
+   publisher = {ACM},
+   address =   {New York, NY, USA}
+}</code></pre>
+
+<h2>Data</h2>
+
+We have obtained 100,000 user information from the <a href="http://www.myspace.com/">MySpace</a> friend network by crawling the MySpace online web site
+from September to October, 2006. The crawler randomly selects a starting user site, and crawl the user's friends' pages,
+their friends' pages, and so on. We have left out users who do not publicize their firends' list, and the amount of those
+users were about 23% out of all the nodes we have crawled.
+Unfortunately, we cannot provide the orkut dataset that was used in our paper, since it was lost in a crash of our 
+data server. For more information on the traces, please refer to our paper.  
+
+<h3>MySpace </h3>
+<ul>
+<li>Format: <code>user id A | user id B</code>
+<li>Description:
+A new user in MySpace by default gets a friend relationship with Tom Anderson, the cofounder of MySpace. 
+In our dataset, we exclude links to him, since he has links to everyone.
+<li><a href="data/myspace100000.net">Download MySpace data</a> (collected from September to October, 2006, number of nodes = 100,000, number of edges = 6,854,231)
+</ul>
+
+<h3>Contact</h3>
+<address>
+Yong-Yeol Ahn, Dept. of Physics, KAIST. Email: yongyeol@gmail.com
+</address>
+
+</body>
+</html>

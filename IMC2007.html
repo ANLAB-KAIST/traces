@@ -1,0 +1,165 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<HTML>
+<HEAD>
+   <BASE href="http://an.kaist.ac.kr/traces/">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <META NAME="Keywords" CONTENT="YouTube,Trace,IMC,2007">
+   <STYLE>BODY { FONT-FAMILY: times new roman, roman, courier}</STYLE>
+   <TITLE>I Tube, You Tube, Everybody Tubes</TITLE>
+</HEAD>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2910420-1";
+urchinTracker();
+</script>
+<BODY text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+<H1>I Tube, You Tube, Everybody Tubes: Analyzing the World's Largest User Generated Content Video System </H1>
+
+
+<P><a href=http://an.kaist.ac.kr/~mycha>Meeyoung Cha</a>, <a href=http://an.kaist.ac.kr/~haewoon>Haewoon Kwak</a>, <a href=http://www.rodriguezrodriguez.com>Pablo Rodriguez</a>, <a href=http://janice.kaist.ac.kr/~gomeisa>Yong-Yeol Ahn</a>, <a href=http://an.kaist.ac.kr/~sbmoon>Sue Moon</a><br>
+<a href=http://www.imconf.net/imc-2007/>Proc. ACM Internet Measurement Conference (IMC)</a>, San Diego, CA, October 2007
+<br><p>
+
+
+User Generated Content (UGC) is re-shaping the way people
+watch video and TV, with millions of video producers and
+consumers. In particular, UGC sites are creating new viewing 
+patterns and social interactions, empowering users to be
+more creative, and developing new business opportunities.
+To better understand the impact of UGC systems, we have
+analyzed YouTube, the world's largest UGC VoD system.
+Based on a large amount of data collected, we provide an
+in-depth study of YouTube and other similar UGC systems.
+In particular, we study the popularity life-cycle of videos,
+the intrinsic statistical properties of requests and their 
+relationship with video age, and the level of content aliasing
+or of illegal content in the system. We also provide insights
+on the potential for more efficient UGC VoD systems (e.g.,
+utilizing P2P techniques or making better use of caching).
+Finally, we discuss the opportunities to leverage the latent
+demand for niche videos that are not reached today due to
+information filtering effects or other system scarcity distortions. 
+Overall, we believe that the results presented in this
+paper are crucial in understanding UGC systems and can
+provide valuable information to ISPs, site administrators,
+and content owners with major commercial and technical
+implications.
+
+<br><p>[<a href="papers/imc131-cha.pdf">PDF</a> (1,343KB)]
+
+<p><pre><FONT face=courier new>@inproceedings{imc2007cha,
+   author =       "Meeyoung Cha and Haewoon Kwak and Pablo Rodriguez and Yong-Yeol Ahn and Sue Moon",
+   title =        "{I Tube, You Tube, Everybody Tubes: Analyzing the World's Largest User Generated Content Video System}",
+   booktitle =    {ACM Internet Measurement Conference},
+   year =         {2007},
+   month =        {October}
+}</font></pre>
+
+
+
+<P><BR><P><BR>
+<H2>Data</H2>
+
+
+
+We share our traces on user-generated videos for the wider community use. 
+Our traces include meta-information about videos from 
+<A href="http://www.youtube.com">YouTube</a>
+and <A href="http://ucc.daum.net">Daum</a> services.
+We provide snapshot of all videos in some of their video categories. 
+For more information on the traces,
+please refer to our paper.  <br/>
+<b><font color="red"> If you have a publication using our trace, please let us know by email at  haewoon ATT an.kaist.ac.kr. </font></b>
+<br/>
+
+
+
+<h3>YouTube Entertainment Category </h3>
+<li>Format: <i>url | length | views | ratings | stars </i>
+
+<li>Example: /watch?v=abc|01:30|100|5|4.0
+
+<li>Description:
+
+
+<br>
+This trace provides meta-information of all the videos 
+in Entertainment category. 
+
+Each line represents a single video. 
+The example above indicates that 
+the length of YouTube video 
+<i>http://www.youtube.com/watch?v=abc</i> is 1:30 or 90 seconds and
+this video was viewed 100 times. 5 users rated this video 
+and the average score of rating was 4.0. 
+Please note that there may be empty fields in our traces. 
+<LI><A href="data/YoutubeEntDec212006.txt">Download YouTube Ent Trace</a>
+(collected at December 21, 2006, number of videos = 1,687,506)
+
+
+<P><BR>
+<h3>YouTube Science & Technology Category</h3>
+
+<li>Format: <i>url | length | views1 | ratings1 | user_id | upload_date | views2 | comments2 | favorited2 | ratings2 | stars2 | honors2 | links2 | related2</i>
+
+<li>Example: watch?v=abcd1234567|01:30|100|5|mia|January 16,
+2007|200|10|10|10|4.0|5|10 https://www.myspace.com/::13 
+https://www.blogspot.com|/watch?v=a /watch?v=b
+
+<li>Description: 
+<br> 
+This trace provides meta-information of all the videos 
+in Science & Technology category. This category is now called "Howto & DIY." 
+
+The example above indicates that 
+video <i>http://www.youtube.com/watch?v=abcd1234567</i>, uploaded by user ID
+mia, has length of 1:30 or 90 seconds.
+The <i>views1, ratings1</i> fields reflect the number of views and ratings
+collected at January 15, 2007 -- which in this example are 100 and 5, respectively.
+
+<br>We have collected video information for the same set of videos after a month.
+<i>Views2, ratings2, ..., related2</i> fields indicate 
+the number of views, comments, favorites, ratings, stars, honors, 
+linking pages and their clicks, and related videos,
+collected at February 14, 2007.
+Please note that deleted videos will appear with empty fields in our trace.
+
+<br>Linking videos are shown as a tuple of 
+<i>clicks page_url</i>, concatenated by <i>::</i> sign. The example above indicates that 10 clicks were made from myspace.com web site and 13 clicks, 
+from blogspot.com web site. Finally, <i>related2</i> shows the list of related
+selected by YouTube. Note that both linking pages and related videos in our
+traces are based on any information shown in the front page of the corresponding video (i.e., there may be other linking pages and related videos).  
+
+<LI><A href="data/YoutubeSciJan162007.txt">Download YouTube Sci Trace</a>
+(collected at January 15 / February 14, 2007, number of videos 
+= 252,255)
+ 
+
+
+
+<P><BR>
+<H3>Daum Food and Travel Categories</H3>
+
+<li>Format: <i>video_id | upload_date | length | user_id | recommended | views</i></li>
+<li>Example: /ClipView.do?clipid=994690&type=chal|06.11.03|322|80757|3|267</li>
+
+<li>Description:
+<br/>Each line includes the meta-information of a video. 
+The example above indicates that Daum video 
+with URL <i>/ClipView.do?clipid=994690&type=chal</i>, uploaded by user <i>80757</i>, 
+has length of 322 seconds (or 5:22).
+The <i>view</i> and <i>recommended</i> fields show the number of views and recommendations for the corresponding video,
+collected at April, 12, 2007 -- which in this example are 267 and 3, respectively.
+<li><a href="data/Daum_Food_20070403.txt">Download Daum Food Trace</a>
+(collected at April 3, 2007, number of videos = 1,393)</li>
+<li><a href="data/Daum_Travel_20070412.txt">Download Daum Travel Trace</a>
+(collected at April 12, 2007, number of videos = 9,295)</li>
+
+
+
+
+<P><BR><P><BR>
+<H3>Contact</H3>
+Meeyoung Cha (meeyoung.cha ATT gmail.com)
+<br>Haewoon Kwak (haewoon ATT an.kaist.ac.kr)
